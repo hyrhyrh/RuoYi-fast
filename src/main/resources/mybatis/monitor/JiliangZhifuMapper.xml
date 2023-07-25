@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.project.monitor.job.mapper.JiliangZhifuMapper">
+
+    <delete id="delJiliangZhifu">
+        delete from jiliang_zhifu where 1 = 1
+    </delete>
+
+    <insert id="insertJiliangZhifu" parameterType="JiliangZhifu">
+        insert into jiliang_zhifu(
+        <if test="id != null and id != ''">id,</if>
+        <if test="name != null and name != ''">name,</if>
+        <if test="num != null and num != ''">num,</if>
+        <if test="amount != null and amount != ''">amount,</if>
+        <if test="contractPrice != null and contractPrice != ''">contractPrice</if>
+        )values(
+        <if test="id != null and id != ''">#{id},</if>
+        <if test="name != null and name != ''">#{name},</if>
+        <if test="num != null and num != ''">#{num},</if>
+        <if test="amount != null and amount != ''">#{amount},</if>
+        <if test="contractPrice != null and contractPrice != ''">#{contractPrice}</if>
+        )
+    </insert>
+
+    <delete id="delJlzFmonth">
+        delete from jlzf_month where 1 = 1
+    </delete>
+
+    <insert id="insertJlzFmonth" parameterType="JiliangZhifu">
+        insert into jlzf_month(
+        <if test="id != null and id != ''">tenderId,</if>
+        <if test="name != null and name != ''">name,</if>
+        <if test="endDealTp != null and endDealTp != 0">end_deal_tp,</if>
+        <if test="sfTp != null and sfTp != 0">sf_tp,</if>
+        <if test="endSfTp != null and endSfTp != 0">end_sf_tp,</if>
+        <if test="dealTp != null and dealTp != 0">deal_tp,</if>
+        <if test="changeTp != null and changeTp != 0">change_tp,</if>
+        <if test="yueFen != null and yueFen != ''">yuefen</if>
+        )values(
+        <if test="id != null and id != ''">#{id},</if>
+        <if test="name != null and name != ''">#{name},</if>
+        <if test="endDealTp != null and endDealTp != 0">#{endDealTp},</if>
+        <if test="sfTp != null and sfTp != 0">#{sfTp},</if>
+        <if test="endSfTp != null and endSfTp != 0">#{endSfTp},</if>
+        <if test="dealTp != null and dealTp != 0">#{dealTp},</if>
+        <if test="changeTp != null and changeTp != 0">#{changeTp},</if>
+        <if test="yueFen != null and yueFen != ''">#{yueFen}</if>
+        )
+    </insert>
+
+
+
+    <delete id="delJiliangZhifuGanSu">
+        delete from jiliang_zhifu where 1 = 1
+    </delete>
+
+    <insert id="insertJiliangZhifuGanSu" parameterType="JiliangZhifu">
+        insert into jiliang_zhifu(
+        <if test="id != null and id != ''">id,</if>
+        <if test="name != null and name != ''">name,</if>
+        <if test="num != null and num != ''">num,</if>
+        <if test="amount != null and amount != ''">amount,</if>
+        <if test="contractPrice != null and contractPrice != ''">contractPrice</if>
+        )values(
+        <if test="id != null and id != ''">#{id},</if>
+        <if test="name != null and name != ''">#{name},</if>
+        <if test="num != null and num != ''">#{num},</if>
+        <if test="amount != null and amount != ''">#{amount},</if>
+        <if test="contractPrice != null and contractPrice != ''">#{contractPrice}</if>
+        )
+    </insert>
+
+    <delete id="delJlzFmonthGanSu">
+        delete from jlzf_month where 1 = 1
+    </delete>
+
+    <insert id="insertJlzFmonthGanSu" parameterType="JiliangZhifu">
+        insert into jlzf_month(
+        <if test="id != null and id != ''">tenderId,</if>
+        <if test="name != null and name != ''">name,</if>
+        <if test="endDealTp != null and endDealTp != 0">end_deal_tp,</if>
+        <if test="sfTp != null and sfTp != 0">sf_tp,</if>
+        <if test="endSfTp != null and endSfTp != 0">end_sf_tp,</if>
+        <if test="dealTp != null and dealTp != 0">deal_tp,</if>
+        <if test="changeTp != null and changeTp != 0">change_tp,</if>
+        <if test="yueFen != null and yueFen != ''">yuefen</if>
+        )values(
+        <if test="id != null and id != ''">#{id},</if>
+        <if test="name != null and name != ''">#{name},</if>
+        <if test="endDealTp != null and endDealTp != 0">#{endDealTp},</if>
+        <if test="sfTp != null and sfTp != 0">#{sfTp},</if>
+        <if test="endSfTp != null and endSfTp != 0">#{endSfTp},</if>
+        <if test="dealTp != null and dealTp != 0">#{dealTp},</if>
+        <if test="changeTp != null and changeTp != 0">#{changeTp},</if>
+        <if test="yueFen != null and yueFen != ''">#{yueFen}</if>
+        )
+    </insert>
+</mapper>

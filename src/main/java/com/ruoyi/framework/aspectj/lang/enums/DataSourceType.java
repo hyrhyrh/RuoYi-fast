@@ -15,5 +15,18 @@ public enum DataSourceType
     /**
      * 从库
      */
-    SLAVE
+    SLAVE,
+
+    SLAVEC,
+
+    /**
+     * 公司大屏数据库
+     */
+    SLAVE_COMPANY,
+
+    /**
+     * 甘肃大屏数据库
+     */
+    SLAVE_GANSU,
+
 }

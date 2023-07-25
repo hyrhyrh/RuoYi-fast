@@ -133,17 +133,21 @@ public class HttpUtils
         {
             log.info("sendPost - {}", url);
             URL realUrl = new URL(url);
+            // 打开url的一个链接
             URLConnection conn = realUrl.openConnection();
+            //设置通用的请求属性
             conn.setRequestProperty("accept", "*/*");
             conn.setRequestProperty("connection", "Keep-Alive");
             conn.setRequestProperty("user-agent", "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1;SV1)");
             conn.setRequestProperty("Accept-Charset", "utf-8");
-            conn.setRequestProperty("contentType", "utf-8");
+            conn.setRequestProperty("content-Type", "application/json;charset=utf-8");
+            //Dooutput设置是否向httpUrLconnection输出，DoImput设置是否从httpurLconnection读入，此外发送post请求必须设置这两
             conn.setDoOutput(true);
             conn.setDoInput(true);
+            // 获取URLconnection对象对应的输出流
             out = new PrintWriter(conn.getOutputStream());
-            out.print(param);
-            out.flush();
+            out.print(param);  // 发送请求参数即数据
+            out.flush(); // flush输出流的缓冲
             in = new BufferedReader(new InputStreamReader(conn.getInputStream(), StandardCharsets.UTF_8));
             String line;
             while ((line = in.readLine()) != null)

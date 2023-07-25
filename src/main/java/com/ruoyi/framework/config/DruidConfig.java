@@ -9,6 +9,8 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.sql.DataSource;
+
+import com.ruoyi.project.monitor.job.util.ParamKeyValue;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
@@ -49,13 +51,43 @@ public class DruidConfig
         return druidProperties.dataSource(dataSource);
     }
 
+    @Bean
+    @ConfigurationProperties("spring.datasource.druid.slavec")
+    @ConditionalOnProperty(prefix = "spring.datasource.druid.slavec", name = "enabled", havingValue = "true")
+    public DataSource slaveDataSourceC(DruidProperties druidProperties)
+    {
+        DruidDataSource dataSource = DruidDataSourceBuilder.create().build();
+        return druidProperties.dataSource(dataSource);
+    }
+
+    @Bean
+    @ConfigurationProperties("spring.datasource.druid.slavecompany")
+    @ConditionalOnProperty(prefix = "spring.datasource.druid.slavecompany", name = "enabled", havingValue = "true")
+    public DataSource slaveDataSourceCompany(DruidProperties druidProperties)
+    {
+        DruidDataSource dataSource = DruidDataSourceBuilder.create().build();
+        return druidProperties.dataSource(dataSource);
+    }
+
+    @Bean
+    @ConfigurationProperties("spring.datasource.druid.slavegansu")
+    @ConditionalOnProperty(prefix = "spring.datasource.druid.slavegansu", name = "enabled", havingValue = "true")
+    public DataSource slaveDataSourceGansu(DruidProperties druidProperties)
+    {
+        DruidDataSource dataSource = DruidDataSourceBuilder.create().build();
+        return druidProperties.dataSource(dataSource);
+    }
+
     @Bean(name = "dynamicDataSource")
     @Primary
     public DynamicDataSource dataSource(DataSource masterDataSource)
     {
         Map<Object, Object> targetDataSources = new HashMap<>();
         targetDataSources.put(DataSourceType.MASTER.name(), masterDataSource);
-        setDataSource(targetDataSources, DataSourceType.SLAVE.name(), "slaveDataSource");
+        setDataSource(targetDataSources, DataSourceType.SLAVE.name(), ParamKeyValue.DB_SLAVE);
+        setDataSource(targetDataSources, DataSourceType.SLAVEC.name(), ParamKeyValue.DB_SLAVEC);
+        setDataSource(targetDataSources, DataSourceType.SLAVE_COMPANY.name(), ParamKeyValue.DB_SLAVE_COMPANY);
+        setDataSource(targetDataSources, DataSourceType.SLAVE_GANSU.name(), ParamKeyValue.DB_SLAVE_GANSU);
         return new DynamicDataSource(masterDataSource, targetDataSources);
     }
 
